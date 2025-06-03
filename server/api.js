@@ -46,7 +46,7 @@ const guestMailOptions = {
 
 app.use(
   cors({
-    origin: "https://ethels-80th-birthday.online",
+    origin: "http://localhost:5173",
     methods: ["GET", "POST"],
   })
 );
@@ -75,7 +75,8 @@ app.post("/api", (req, res) => {
       name.toLowerCase().includes("mrs") ||
       name.toLowerCase().includes("dr") ||
       name.toLowerCase().includes("miss") ||
-      name.toLowerCase().includes("ms")
+      name.toLowerCase().includes("ms") ||
+      name.toLowerCase().includes("mr")
     ) {
       [prefix1, guestName] = name.split(" ");
     } else {
@@ -103,6 +104,14 @@ app.post("/api", (req, res) => {
       console.error("No existing file or invalid JSON.");
     }
 
+    //check tempArray to see if new guest object received  already exists in invitation list
+    tempArray.forEach((guest) => {
+      const currentGuestEmail = guest.email.toLowerCase();
+      const newGuestEmail = email.toLowerCase();
+      if (currentGuestEmail == newGuestEmail) {
+        tempArray.splice(indexOf(guest), 1, req.body);
+      }
+    });
     tempArray.push(req.body);
 
     //tally total number of guests
