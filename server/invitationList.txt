@@ -1,0 +1,14 @@
+[
+    {
+        "name": "Nonye Ogochukwu Ulasi",
+        "email": "nonyeulasi@hotmail.com",
+        "otherguests": "",
+        "attending": false
+    },
+    {
+        "name": "Sally Studley",
+        "email": "info@thefashionconnector.com",
+        "otherguests": "1",
+        "attending": true
+    }
+]

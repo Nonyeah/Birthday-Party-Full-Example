@@ -12,7 +12,7 @@ const factData: Array<FactData> = [
     question: "Where was Mama Ethel born?",
     answer:
       "The Nigeria eastern town of Onitsha, but\
-      her family roots are in Nnewi",
+      her family roots are in Nnewi.",
   },
   {
     id: "num1",
@@ -39,7 +39,7 @@ const factData: Array<FactData> = [
   {
     id: "num5",
     question: "Who is Ethel's favourite recording artist?",
-    answer: "The late, great Michael Jackson of course!",
+    answer: "The late, great, Michael Jackson of course!",
   },
 ];
 

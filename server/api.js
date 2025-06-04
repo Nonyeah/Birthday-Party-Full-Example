@@ -105,14 +105,21 @@ app.post("/api", (req, res) => {
     }
 
     //check tempArray to see if new guest object received  already exists in invitation list
-    tempArray.forEach((guest) => {
-      const currentGuestEmail = guest.email.toLowerCase();
-      const newGuestEmail = email.toLowerCase();
-      if (currentGuestEmail == newGuestEmail) {
-        tempArray.splice(indexOf(guest), 1, req.body);
-      }
-    });
-    tempArray.push(req.body);
+    if (tempArray.length) {
+      const match = tempArray.find(
+        (guestObject) =>
+          guestObject.email.toLowerCase().trim() == email.toLowerCase().trim()
+      );
+      if (match) {
+        tempArray.splice(tempArray.indexOf(match), 1, req.body);
+      } else {
+      tempArray.push(req.body);
+    }
+  }
+
+    if (!tempArray.length) {
+      tempArray.push(req.body);
+    }
 
     //tally total number of guests
     tempArray.forEach((guest) => {

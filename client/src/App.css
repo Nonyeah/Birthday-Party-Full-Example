@@ -335,6 +335,7 @@ form.showForm{
 
 .address-details p.right, .address-details p.left {
   margin: 20px 0;
+  text-align:left;
 
 }
 

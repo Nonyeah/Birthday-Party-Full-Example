@@ -38,7 +38,7 @@ export default function Address() {
         </div>
 
         <div className="itenary">
-          <p className="left">Itineary:</p>
+          <p className="left">Itinerary:</p>
           <p className="right">
             <ul>
               <li>6pm - 6.30pm: &nbsp; arrival of guests</li>
