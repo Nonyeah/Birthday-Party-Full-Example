@@ -104,7 +104,8 @@ app.post("/api", (req, res) => {
       console.error("No existing file or invalid JSON.");
     }
 
-    //check tempArray to see if new guest object received  already exists in invitation list
+    //check tempArray to see if new guest object received  already exists in invitation list 
+    //overwrite duplicate entries
     if (tempArray.length) {
       const match = tempArray.find(
         (guestObject) =>
