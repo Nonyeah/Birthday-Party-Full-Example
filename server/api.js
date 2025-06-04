@@ -59,7 +59,7 @@ app.get("/", (req, res) => {
 });
 
 app.post("/api", (req, res) => {
-  console.log("Request body:", req.body);
+  //console.log("Request body:", req.body);
   const { name, email, attending, otherguests } = req.body;
 
   //check name for Mr/Mrs/Dr prefixes
@@ -104,8 +104,8 @@ app.post("/api", (req, res) => {
       console.error("No existing file or invalid JSON.");
     }
 
-    //check tempArray to see if new guest object received  already exists in invitation list
-    //overwrite duplicate entries
+    //check tempArray to see if new guest object received from client 
+    //already exists in invitation list and overwrite duplicate entries
     if (tempArray.length) {
       const match = tempArray.find(
         (guestObject) =>
