@@ -104,7 +104,7 @@ app.post("/api", (req, res) => {
       console.error("No existing file or invalid JSON.");
     }
 
-    //check tempArray to see if new guest object received  already exists in invitation list 
+    //check tempArray to see if new guest object received  already exists in invitation list
     //overwrite duplicate entries
     if (tempArray.length) {
       const match = tempArray.find(
@@ -114,9 +114,9 @@ app.post("/api", (req, res) => {
       if (match) {
         tempArray.splice(tempArray.indexOf(match), 1, req.body);
       } else {
-      tempArray.push(req.body);
+        tempArray.push(req.body);
+      }
     }
-  }
 
     if (!tempArray.length) {
       tempArray.push(req.body);
@@ -167,7 +167,7 @@ app.post("/api", (req, res) => {
           console.error(error);
         } else {
           console.log(info.response);
-        }
+        } 
       });
     };
     confirmationYes();
@@ -195,7 +195,6 @@ app.post("/api", (req, res) => {
   }
 
   //send email to event organiser with guest list attachment
-
   const confirmationOrganiser = () => {
     mailOptions.html = htmlFragment;
     transporter.sendMail(mailOptions, function (error, info) {
