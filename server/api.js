@@ -28,7 +28,7 @@ const transporter = nodemailer.createTransport({
 //transporter configuration for email sent to organiser
 const mailOptions = {
   from: process.env.EMAIL_USER,
-  to: `${process.env.EMAIL_USER}, nonyeulasi@hotmail.com`,
+  to: `${process.env.EMAIL_USER}, nonyeulasi@hotmail.com, ethelulasi@yahoo.co.uk`,
   subject: "80th Birthday Party Guest List Update",
   attachments: [
     {
@@ -41,7 +41,7 @@ const mailOptions = {
 //transporter configuration for email sent to guests
 const guestMailOptions = {
   from: process.env.EMAIL_USER,
-  subject: "Mama Ethels's 80th Birthday Bash!",
+  subject: "Mama Ethel's 80th Birthday Bash!",
 };
 
 app.use(
