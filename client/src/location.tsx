@@ -7,7 +7,7 @@ export default function Address() {
 
         <div className="time">
           <p className="left">Date:</p>
-          <p className="right">November 1st 2025</p>
+          <p className="right">Saturday November 1st 2025</p>
         </div>
         
         <div className="time">
@@ -41,11 +41,11 @@ export default function Address() {
           <p className="left">Itinerary:</p>
           <p className="right">
             <ul>
-              <li>6pm - 6.30pm: &nbsp; arrival of guests</li>
-              <li>6.45pm - 7pm: &nbsp; opening prayer and introductions</li>
-              <li>7.15pm - 8pm: &nbsp; family presentation and MC takeover</li>
-              <li>8.15pm - 9.15pm: &nbsp; delicious dinner and cutting of birthday cake</li>
-              <li>9.30pm - 11.30pm: &nbsp; dance floor opens. Let's shake a leg or two to some good grooves</li>
+              <li>6pm - 6.30pm: &nbsp; Arrival of guests</li>
+              <li>6.45pm - 7pm: &nbsp; Opening prayer and introductions</li>
+              <li>7.15pm - 8pm: &nbsp; Family presentation and MC takeover</li>
+              <li>8.15pm - 9.15pm: &nbsp; Delicious dinner and cutting of birthday cake</li>
+              <li>9.30pm - 11.30pm: &nbsp; Dance floor opens. Let's shake a leg or two to some good grooves</li>
             </ul>
           </p>
         </div>

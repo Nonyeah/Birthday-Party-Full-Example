@@ -11,7 +11,7 @@ const factData: Array<FactData> = [
     id: "num0",
     question: "Where was Mama Ethel born?",
     answer:
-      "The Nigeria eastern town of Onitsha, but\
+      "The Nigerian eastern town of Onitsha, but\
       her family roots are in Nnewi.",
   },
   {
