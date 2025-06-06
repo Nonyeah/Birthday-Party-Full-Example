@@ -163,17 +163,17 @@ html {
   font-weight:bold;
 }
 
-.address-details p.right {
+.address-details p.right  {
   width: 60%;
   margin: 20px 5px;
 }
 
- .address ul.right{
-  list-style-type: none;
- margin: 0 20px 10px 0;
- padding: 20px 0;
-  
+section.right p.inner-paragraph{
+  margin: 0;
 }
+
+
+
 
 .itenary ul {
 margin: 0
@@ -328,18 +328,14 @@ form.showForm{
     width: 80%;
   }
 
-   .address ul.right{
-  margin: 20px 0 20px 0;
-  
-}
-
+ 
 .address-details p.right, .address-details p.left {
   margin: 20px 0;
   text-align:left;
 
 }
 
-.address-details p.right{
+.address-details p.right, .address-details section.right{
   width: 80%;
 }
 
@@ -351,10 +347,4 @@ div.parking p.left{
  margin: 20px 10px 20px 0;
 }
 
-.address ul.right{
-
- margin: 0 10px;
- padding: 20px 0;
-  
-}
 }

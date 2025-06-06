@@ -17,15 +17,15 @@ export default function Address() {
 
         <div className="address">
           <p className="left">Where:</p>
-          <ul className="right">
-            <li>Learie Constantine Centre </li>
-            <li>Villiers Road (nearest tube station - Dollis Hill)</li>
-            <li> NW2 2FD</li>
-          </ul>
+          <section className="right">
+           <p> Learie Constantine Centre</p> 
+            <p className="inner-paragraph">Villiers Road (nearest tube station - Dollis Hill)</p>
+            <p className="inner-paragraph"> London NW2 2FD</p>
+          </section>
         </div>
 
         <div className="parking">
-          <p className="left">Parking:&nbsp;</p>
+          <p className="left">Parking:</p>
           <p className="right">An abundance of free parking bays are available on the main road and surrounding 
             roads all day
           </p>
