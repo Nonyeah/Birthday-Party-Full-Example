@@ -29,7 +29,7 @@ const data: Array<EventData> = [
   {
     id: 3,
     label: "Parking:",
-    text: " An abundance of free parking bays are available on the main road and surrounding roads all day",
+    text: "An abundance of free parking bays are available on the main road and surrounding roads all day",
   },
   {
     id: 4,

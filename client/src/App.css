@@ -333,16 +333,13 @@ form.showForm {
     text-align: left;
   }
 
-  .address-details p.right,
-  .address-details section.right {
-    width: 80%;
+  .address-details p.right{
+    width: 75%;
   }
 
   .address-details p.left {
-    width: 20%;
+    width: 25%;
   }
 
-  div.parking p.left {
-    margin: 20px 10px 20px 0;
-  }
+
 }
