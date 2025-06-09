@@ -6,17 +6,20 @@ html {
 .intro-container {
   background-image: url(assets/heart.jpg);
   padding: 30px;
- 
 }
 
-.intro-container .photo{
-  width:300px;
-  height:300px;
+.intro-container .photo {
+  width: 300px;
+  height: 300px;
   border: 1px solid #f88dcf;
-  border-radius:50%;
-  display:inline-block;
+  border-radius: 50%;
+  display: inline-block;
   background-image: url(assets/ethel.jpg);
- 
+}
+
+.rotate-pic {
+  transform: rotateY(360deg);
+  transition: all 3s;
 }
 
 .intro-container h1 {
@@ -45,7 +48,6 @@ html {
   font-size: 1rem;
   line-height: 150%;
   color: #000;
-  
 }
 
 .intro-container span {
@@ -59,7 +61,7 @@ html {
   padding: 20px;
   background-image: url(assets/baloons-bg.jpg);
   color: #000;
-  margin: 10px 0; 
+  margin: 10px 0;
 }
 
 .trivia-title h2 {
@@ -152,31 +154,29 @@ html {
 .address,
 .parking,
 .dress-code,
-.details, 
-.itenary {
+.details,
+.itenary,
+.itin-inner {
   display: flex;
 }
 
-.address-details p.left {
+.address-details p.left, .itin-inner p.left {
   width: 30%;
   margin: 20px 5px;
-  font-weight:bold;
+  font-weight: bold;
 }
 
-.address-details p.right  {
+.address-details p.right, .itin-inner p.right {
   width: 60%;
   margin: 20px 5px;
 }
 
-section.right p.inner-paragraph{
+section.right p.inner-paragraph {
   margin: 0;
 }
 
-
-
-
 .itenary ul {
-margin: 0
+  margin: 0;
 }
 
 .registry {
@@ -282,7 +282,7 @@ p#browser-message {
   display: block;
   text-align: center;
   padding: 20px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   margin: 20px 0;
   background-color: #a8ecae;
   height: 250px;
@@ -290,23 +290,22 @@ p#browser-message {
   background-image: url(assets/blue-bg.jpg);
 }
 
-.show p{
-position: absolute;
-top: 50%;
-left: 50%;
-transform: translate(-50%, -50%);
-color: #fff;
-font-size: 1.2rem;
+.show p {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  font-size: 1.2rem;
 }
 
 form.hideForm {
-  display:none;
+  display: none;
 }
 
-form.showForm{
+form.showForm {
   display: block;
 }
-
 
 @media screen and (max-width: 700px) {
   .fact-container .show-answer {
@@ -328,23 +327,22 @@ form.showForm{
     width: 80%;
   }
 
- 
-.address-details p.right, .address-details p.left {
-  margin: 20px 0;
-  text-align:left;
+  .address-details p.right,
+  .address-details p.left {
+    margin: 20px 0;
+    text-align: left;
+  }
 
-}
+  .address-details p.right,
+  .address-details section.right {
+    width: 80%;
+  }
 
-.address-details p.right, .address-details section.right{
-  width: 80%;
-}
+  .address-details p.left {
+    width: 20%;
+  }
 
-.address-details p.left{
-  width: 20%;
-}
-
-div.parking p.left{
- margin: 20px 10px 20px 0;
-}
-
+  div.parking p.left {
+    margin: 20px 10px 20px 0;
+  }
 }
