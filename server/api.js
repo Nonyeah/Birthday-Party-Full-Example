@@ -109,7 +109,7 @@ app.post("/api", (req, res) => {
     if (tempArray.length) {
       const match = tempArray.find(
         (guestObject) =>
-          guestObject.email.toLowerCase().trim() == email.toLowerCase().trim()
+          guestObject.email.toLowerCase().trim() === email.toLowerCase().trim()
       );
       if (match) {
         tempArray.splice(tempArray.indexOf(match), 1, req.body);
