@@ -65,7 +65,7 @@ function CreateItinerary({ id, label, text, counter, setcounter }: Data) {
       if (id === counter) {
         new Promise<string>((resolve: (value: string) => void) => {
           //obtain each string label value via a promise
-          timerId = setTimeout(() => resolve(label), 4000);
+          timerId = setTimeout(() => resolve(label), 3000);
         })
           .then((label) => {
             let i = 0;
@@ -150,7 +150,7 @@ export default function Address() {
     for (let char of titleText) {
       const timeoutId = setTimeout(() => {
         titleRef.current!.innerHTML += char;
-      }, 1000 + (i += 50));
+      }, 2000 + (i += 50));
       timeouts.push(timeoutId);
     }
 
