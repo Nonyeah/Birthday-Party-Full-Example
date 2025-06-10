@@ -61,11 +61,11 @@ function CreateItinerary({ id, label, text, counter, setcounter }: Data) {
   useEffect(() => {
     setTimeout(() => {
       let timerId: any;
-      //if react node id matches state variable counter run the effect
+      //if the React element node id matches the state variable count run the effect
       if (id === counter) {
         new Promise<string>((resolve: (value: string) => void) => {
-          //obtain each string label value via a promise
-          timerId = setTimeout(() => resolve(label), 3000);
+          //obtain the value of the label string variable via a promise and resolve after 3s
+          timerId = setTimeout(() => resolve(label), 4000);
         })
           .then((label) => {
             let i = 0;
@@ -87,7 +87,7 @@ function CreateItinerary({ id, label, text, counter, setcounter }: Data) {
               if (typeof textvalue === "string") {
                 const arr: string[] = textvalue.split(" ");
                 intervalId = setInterval(() => {
-                  if (n < arr.length) {
+                  if (n < arr.length && textRef.current) {
                     textRef.current!.innerHTML += `${arr[n]} `;
                     n++;
                   } else {
@@ -97,7 +97,7 @@ function CreateItinerary({ id, label, text, counter, setcounter }: Data) {
                 setcounter(counter + 1);
               } else if (Array.isArray(textvalue)) {
                 let intervalId: any = setInterval(() => {
-                  if (n < textvalue.length) {
+                  if (n < textvalue.length && textRef.current) {
                     textRef.current!.innerHTML += `${textvalue[n]} <br>`;
                     n++;
                   } else {
@@ -139,18 +139,15 @@ export default function Address() {
     );
   });
 
+  //parent effect runs once on initial mount
   useEffect(() => {
     let i = 200;
     let timeouts: any[] = [];
 
-    if (titleRef.current) {
-      titleRef.current.innerHTML = ""; // Clear previous runs
-    }
-
     for (let char of titleText) {
       const timeoutId = setTimeout(() => {
         titleRef.current!.innerHTML += char;
-      }, 2000 + (i += 50));
+      }, 2000 + (i += 100));
       timeouts.push(timeoutId);
     }
 
