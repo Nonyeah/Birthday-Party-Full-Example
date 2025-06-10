@@ -46,7 +46,7 @@ const guestMailOptions = {
 
 app.use(
   cors({
-    origin: "https://ethels-80th-birthday.online/",
+    origin: "http://localhost:5173",
     methods: ["GET", "POST"],
   })
 );
@@ -58,8 +58,17 @@ app.get("/", (req, res) => {
   res.sendFile(path.resolve(__dirname, "dist", "index.html"));
 });
 
-app.post("/api", (req, res) => {
+let isUpdating = false;
+
+app.post("/", (req, res) => {
   //console.log("Request body:", req.body);
+
+   if (isUpdating) {
+    return res.status(429).send("Please wait...");
+  };
+
+  isUpdating = true;
+
   const { name, email, attending, otherguests } = req.body;
 
   //check name for Mr/Mrs/Dr prefixes
@@ -171,6 +180,7 @@ app.post("/api", (req, res) => {
       });
     };
     confirmationYes();
+    isUpdating = false;
   } else {
     //send confirmation email to guest that declined
     res.send(
@@ -192,6 +202,8 @@ app.post("/api", (req, res) => {
       });
     };
     confirmationNo();
+    isUpdating = false;
+    
   }
 
   //send email to event organiser with guest list attachment
