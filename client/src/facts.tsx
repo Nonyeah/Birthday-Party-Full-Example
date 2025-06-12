@@ -27,7 +27,7 @@ const factData: Array<FactData> = [
   {
     id: "num3",
     question: "How many children and grand children does Mama Ethel have?",
-    answer: "10! Can you believe it. But no great grand children yet!",
+    answer: "10! Can you believe it? But no great grand children yet!",
   },
   {
     id: "num4",
