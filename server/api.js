@@ -104,7 +104,7 @@ app.post("/", (req, res) => {
 
   const updateInviteList = () => {
     try {
-      const fileData = fs.readFileSync("invitationList.txt", "utf-8");
+      let fileData = fs.readFileSync("invitationList.txt", "utf-8");
       if (fileData) {
         const guestList = JSON.parse(fileData);
         tempArray.push(...guestList);
