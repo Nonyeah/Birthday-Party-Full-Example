@@ -61,7 +61,7 @@ function CreateItinerary({ id, label, text, counter, setcounter }: Data) {
   useEffect(() => {
     setTimeout(() => {
       let timerId: any;
-      //if the React element node id matches the state variable count run the effect
+      //if the individual React element node id matches the shared state variable count run the effect
       if (id === counter) {
         new Promise<string>((resolve: (value: string) => void) => {
           //obtain the value of the label string variable via a promise and resolve after 3s
