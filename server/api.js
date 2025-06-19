@@ -46,7 +46,7 @@ const guestMailOptions = {
 
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: "https://ethels-80th-birthday.online",
     methods: ["GET", "POST"],
   })
 );
@@ -60,7 +60,7 @@ app.get("/", (req, res) => {
 
 let isUpdating = false;
 
-app.post("/", (req, res) => {
+app.post("/api", (req, res) => {
   //console.log("Request body:", req.body);
 
    if (isUpdating) {
