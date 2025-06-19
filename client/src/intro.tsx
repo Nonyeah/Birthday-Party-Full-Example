@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 
-export default function Intro() {
+export default function Intro({introref}: {introref: React.RefObject<HTMLDivElement|null>}) {
   const pictureRef = useRef<null | HTMLDivElement>(null);
   const [rotate, setrotate] = useState<boolean>(false);
 
@@ -10,7 +10,7 @@ export default function Intro() {
   }, []);
 
   return (
-    <div className="intro-container">
+    <div ref={introref} className="intro-container">
       <h4>Saturday November 1st 2025</h4>
 
       <div

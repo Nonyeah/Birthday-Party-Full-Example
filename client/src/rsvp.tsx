@@ -7,7 +7,7 @@ interface AttendanceObject {
   attending: boolean;
 }
 
-function RSVP() {
+function RSVP({rsvpref}: {rsvpref: React.RefObject<HTMLFormElement|null>}) {
   const [fullname, setfullname] = useState<string>("Enter your full name");
   const [email, setemail] = useState<string>("Enter your email address");
   const [otherguests, setotherguests] = useState<string | number>("");
@@ -104,7 +104,7 @@ function RSVP() {
       <div ref={messageRef} className={isvisible ? "show" : "hide"}>
         <p></p>
       </div>
-      <form className={isvisible ? "hideForm" : "showForm"} onSubmit={send}>
+      <form ref={rsvpref} className={isvisible ? "hideForm" : "showForm"} onSubmit={send}>
         <div className="form-container">
           <h2>RSVP</h2>
           <p className="rsvp-date">Kindly RSVP before 30th June 2025</p>

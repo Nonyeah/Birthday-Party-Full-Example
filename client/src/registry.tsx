@@ -1,7 +1,7 @@
-function Registry(){
+function Registry({registryref}: {registryref: React.RefObject<HTMLElement|null>}){
 
     return (
-<section className="registry">
+<section ref={registryref} className="registry">
     <h2>your presence is a gift</h2>
     <p>Having amazing family and friends to celebrate with is the best gift of all. 
         However, if you wish to honour our mother with a gift then vouchers 

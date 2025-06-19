@@ -43,7 +43,7 @@ const factData: Array<FactData> = [
   },
 ];
 
-export default function Facts() {
+export default function Facts({triviaref}: {triviaref: React.RefObject<HTMLDivElement|null>}) {
   const factBlocks = factData.map((fact) => {
     return (
       <CreateFacts
@@ -55,7 +55,7 @@ export default function Facts() {
     );
   });
 
-  return <div className="fact-container">{factBlocks}</div>;
+  return <div ref={triviaref} className="fact-container">{factBlocks}</div>;
 }
 
 type HandleAnswer = () => void;

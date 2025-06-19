@@ -3,6 +3,27 @@ html {
   font-size: 18px;
 }
 
+.header-container ul {
+  display: flex;
+  flex-wrap: nowrap;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  justify-content: space-between;
+}
+
+.header-container li {
+  padding: 16px;
+  font-size: 1.2rem;
+  font-family: "calibri light";
+  cursor: pointer;
+  text-transform: uppercase;
+}
+
+.header-container li:hover {
+  background-color: #f0d1e4;
+}
+
 .intro-container {
   background-image: url(assets/heart.jpg);
   padding: 30px;
@@ -160,13 +181,15 @@ html {
   display: flex;
 }
 
-.address-details p.left, .itin-inner p.left {
+.address-details p.left,
+.itin-inner p.left {
   width: 30%;
   margin: 20px 5px;
   font-weight: bold;
 }
 
-.address-details p.right, .itin-inner p.right {
+.address-details p.right,
+.itin-inner p.right {
   width: 60%;
   margin: 20px 5px;
 }
@@ -308,6 +331,10 @@ form.showForm {
 }
 
 @media screen and (max-width: 700px) {
+  .header-container li {
+    font-size: 1rem;
+  }
+
   .fact-container .show-answer {
     width: 35%;
     margin: 30px auto;
@@ -333,13 +360,11 @@ form.showForm {
     text-align: left;
   }
 
-  .address-details p.right{
+  .address-details p.right {
     width: 75%;
   }
 
   .address-details p.left {
     width: 25%;
   }
-
-
 }

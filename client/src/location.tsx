@@ -121,7 +121,7 @@ function CreateItinerary({ id, label, text, counter, setcounter }: Data) {
   );
 }
 
-export default function Address() {
+export default function Address({locationref}: {locationref: React.RefObject<HTMLDivElement|null>}) {
   const titleRef = useRef<null | HTMLHeadingElement>(null);
   const titleText = "Where we plan to party?";
   const [count, setcounter] = useState<number>(0);
@@ -157,7 +157,7 @@ export default function Address() {
   }, []);
 
   return (
-    <div className="address-container">
+    <div ref={locationref} className="address-container">
       <h2 ref={titleRef}></h2>
 
       <div className="address-details">{details}</div>
