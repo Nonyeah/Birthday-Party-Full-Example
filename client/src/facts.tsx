@@ -38,7 +38,7 @@ const factData: Array<FactData> = [
   },
   {
     id: "num5",
-    question: "Who is Ethel's favourite recording artist?",
+    question: "Who is Mama Ethel's favourite recording artist?",
     answer: "The late, great, Michael Jackson of course!",
   },
 ];
