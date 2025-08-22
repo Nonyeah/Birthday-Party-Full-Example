@@ -58,16 +58,9 @@ app.get("/", (req, res) => {
   res.sendFile(path.resolve(__dirname, "dist", "index.html"));
 });
 
-let isUpdating = false;
 
 app.post("/api", (req, res) => {
   //console.log("Request body:", req.body);
-
-   if (isUpdating) {
-    return res.status(429).send("Please wait...");
-  };
-
-  isUpdating = true;
 
   const { name, email, attending, otherguests } = req.body;
 
@@ -106,7 +99,7 @@ app.post("/api", (req, res) => {
     try {
       let fileData = fs.readFileSync("invitationList.txt", "utf-8");
       if (fileData) {
-        const guestList = JSON.parse(fileData);
+        let guestList = JSON.parse(fileData);
         tempArray.push(...guestList);
       }
     } catch (err) {
@@ -174,13 +167,10 @@ app.post("/api", (req, res) => {
       transporter.sendMail(guestMailOptions, (error, info) => {
         if (error) {
           console.error(error);
-        } else {
-          console.log(info.response);
         } 
       });
     };
     confirmationYes();
-    isUpdating = false;
   } else {
     //send confirmation email to guest that declined
     res.send(
@@ -196,14 +186,11 @@ app.post("/api", (req, res) => {
       transporter.sendMail(guestMailOptions, (error, info) => {
         if (error) {
           console.error(error);
-        } else {
-          console.log(info.response);
-        }
+        } 
       });
     };
     confirmationNo();
-    isUpdating = false;
-    
+     
   }
 
   //send email to event organiser with guest list attachment
