@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 
 export default function Intro({introref}: {introref: React.RefObject<HTMLDivElement|null>}) {
-  const pictureRef = useRef<null | HTMLDivElement>(null);
+  const pictureRef: React.RefObject<HTMLDivElement | null> = useRef<null>(null);
   const [rotate, setrotate] = useState<boolean>(false);
 
   useEffect(() => {

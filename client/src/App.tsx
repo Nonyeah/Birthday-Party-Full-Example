@@ -27,11 +27,11 @@ export const scrollObj: ScrollObj = {
 };
 
 function App(props: ScrollObj) {
-  const introRef = useRef<null | HTMLDivElement>(null);
-  const triviaRef = useRef<null | HTMLDivElement>(null);
-  const locationRef = useRef<null | HTMLDivElement>(null);
-  const registryRef = useRef<null | HTMLDivElement>(null);
-  const rsvpRef = useRef<null | HTMLFormElement>(null);
+  const introRef: React.RefObject<HTMLDivElement | null> = useRef<null>(null);
+  const triviaRef: React.RefObject<HTMLDivElement | null> = useRef<null>(null);
+  const locationRef: React.RefObject<HTMLDivElement | null> = useRef<null>(null);
+  const registryRef: React.RefObject<HTMLDivElement | null> = useRef<null>(null);
+  const rsvpRef: React.RefObject<HTMLFormElement | null> = useRef<null>(null);
 
   function handleScroll(id: number) {
     const match: ScrollBlocks | undefined = props.scrollItems.find(

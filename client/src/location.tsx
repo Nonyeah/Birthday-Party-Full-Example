@@ -22,8 +22,8 @@ const data: Array<EventData> = [
     label: "Where:",
     text: [
       "Learie Constantine Centre",
-      "Villiers Road (nearest tube station - Dollis Hill)",
-      "London NW2 2FD",
+      "209-213 Villiers Road (nearest tube station - Dollis Hill)",
+      "London NW2 5PU",
     ],
   },
   {
@@ -55,13 +55,13 @@ const data: Array<EventData> = [
 ];
 
 function CreateItinerary({ id, label, text, counter, setcounter }: Data) {
-  const labelRef = useRef<null | HTMLParagraphElement>(null);
-  const textRef = useRef<null | HTMLParagraphElement>(null);
+  const labelRef: React.RefObject<HTMLParagraphElement | null> = useRef<null>(null);
+  const textRef: React.RefObject<HTMLParagraphElement | null> = useRef<null>(null);
 
   useEffect(() => {
     setTimeout(() => {
       let timerId: any;
-      //if the individual React element node id matches the shared state variable count run the effect
+      //if the individual React element node id matches the shared state variable counter run the effect
       if (id === counter) {
         new Promise<string>((resolve: (value: string) => void) => {
           //obtain the value of the label string variable via a promise and resolve after 3s
@@ -122,7 +122,7 @@ function CreateItinerary({ id, label, text, counter, setcounter }: Data) {
 }
 
 export default function Address({locationref}: {locationref: React.RefObject<HTMLDivElement|null>}) {
-  const titleRef = useRef<null | HTMLHeadingElement>(null);
+  const titleRef: React.RefObject<HTMLHeadingElement | null> = useRef<null>(null);
   const titleText = "Where we plan to party?";
   const [count, setcounter] = useState<number>(0);
 

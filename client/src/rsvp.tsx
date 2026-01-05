@@ -13,13 +13,13 @@ function RSVP({rsvpref}: {rsvpref: React.RefObject<HTMLFormElement|null>}) {
   const [otherguests, setotherguests] = useState<string | number>("");
   const [accept, setaccept] = useState<boolean>(false);
   const [reject, setreject] = useState<boolean>(false);
-  const messageRef = useRef<HTMLDivElement | null>(null);
-  const warning = useRef<HTMLParagraphElement | null>(null);
+  const messageRef: React.RefObject<HTMLDivElement | null> = useRef<null>(null);
+  const warning: React.RefObject<HTMLParagraphElement | null> = useRef<null>(null);
   const [isvisible, setisvisible] = useState<boolean>(false);
 
   function send(e: React.FormEvent<HTMLFormElement>) {
-    const defaultText = "Enter your full name";
     e.preventDefault();
+    const defaultText = "Enter your full name";
     if ((!accept && !reject) || !fullname || fullname === defaultText) {
       warning.current!.innerHTML =
         "Please complete all form fields and don't forget \

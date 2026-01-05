@@ -62,7 +62,7 @@ type HandleAnswer = () => void;
 
 function CreateFacts({ id, question, answer }: FactData) {
   const [showanswer, setshowanser] = useState<boolean>(false);
-  const answerRef = useRef<null | HTMLDivElement>(null);
+  const answerRef: React.RefObject<HTMLDivElement | null> = useRef<null>(null);
 
   useEffect(() => {
     if (showanswer && answerRef.current) {

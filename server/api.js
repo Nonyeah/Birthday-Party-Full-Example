@@ -38,6 +38,12 @@ const mailOptions = {
   ],
 };
 
+const lateRSVPOptions = {
+  from: process.env.EMAIL_USER,
+  to: "nonyeulasi@hotmail.com, ethelulasi@yahoo.co.uk",
+  subject: "Guest Declined - Late RSVP details",
+};
+
 //transporter configuration for email sent to guests
 const guestMailOptions = {
   from: process.env.EMAIL_USER,
@@ -51,6 +57,12 @@ app.use(
   })
 );
 
+app.enable("trust proxy");
+app.use((req, res, next) => {
+  if (req.secure) return next();
+  res.redirect(`https://${req.headers.host}${req.url}`);
+});
+
 app.use(bodyParser.json());
 app.use(express.static(path.resolve(__dirname, "dist")));
 
@@ -58,12 +70,32 @@ app.get("/", (req, res) => {
   res.sendFile(path.resolve(__dirname, "dist", "index.html"));
 });
 
-
 app.post("/api", (req, res) => {
   //console.log("Request body:", req.body);
 
   const { name, email, attending, otherguests } = req.body;
 
+  try {
+    let list = fs.readFileSync("invitationList.txt", "utf-8");
+    if (list) {
+      let listArray = JSON.parse(list);
+      let emailMatch = listArray.find(
+        (storedEmail) =>
+          storedEmail.email.trim().toLowerCase() === email.trim().toLowerCase()
+      );
+      if (!emailMatch) {
+        (lateRSVPOptions.text = `${name} tried to add themselves to the guest list late. ${name}'s RSVP was declined`),
+          transporter.sendMail(lateRSVPOptions, (err) => {
+            if (err) console.error(err);
+          });
+        return res.send(
+          "Unfortunately, the RSVP is CLOSED and we are no longer accepting new guests"
+        );
+      }
+    }
+  } catch (err) {
+    console.err(`${err}: error in guest matching`);
+  }
   //check name for Mr/Mrs/Dr prefixes
   let prefix1, prefix2, ampersand, guestName, firstName;
 
@@ -106,7 +138,7 @@ app.post("/api", (req, res) => {
       console.error("No existing file or invalid JSON.");
     }
 
-    //check tempArray to see if new guest object received from client 
+    //check tempArray to see if new guest object received from client
     //already exists in invitation list and overwrite duplicate entries
     if (tempArray.length) {
       const match = tempArray.find(
@@ -167,7 +199,7 @@ app.post("/api", (req, res) => {
       transporter.sendMail(guestMailOptions, (error, info) => {
         if (error) {
           console.error(error);
-        } 
+        }
       });
     };
     confirmationYes();
@@ -186,11 +218,10 @@ app.post("/api", (req, res) => {
       transporter.sendMail(guestMailOptions, (error, info) => {
         if (error) {
           console.error(error);
-        } 
+        }
       });
     };
     confirmationNo();
-     
   }
 
   //send email to event organiser with guest list attachment
