@@ -7,7 +7,7 @@ import { fileURLToPath } from "url";
 import nodemon from "nodemon";
 import nodemailer from "nodemailer";
 import dotenv from "dotenv";
-import helmet from "helmet";
+
 dotenv.config();
 
 const __filename = fileURLToPath(import.meta.url);
@@ -24,11 +24,6 @@ app.use(
   })
 );
 
-app.use(helmet.hsts({
-  maxAge: 31536000, // 1 year
-  includeSubDomains: true,
-  preload: true,
-}));
 
 app.enable("trust proxy");
 app.use((req, res, next) => {
