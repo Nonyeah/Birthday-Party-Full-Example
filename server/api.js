@@ -7,6 +7,7 @@ import { fileURLToPath } from "url";
 import nodemon from "nodemon";
 import nodemailer from "nodemailer";
 import dotenv from "dotenv";
+import helmet from "helmet";
 dotenv.config();
 
 const __filename = fileURLToPath(import.meta.url);
@@ -15,6 +16,28 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 const pathAttending = path.join(__dirname, "confirmation_email.html"); //email attending path
 const pathNotAttending = path.join(__dirname, "decline_email.html"); //email not attending path
+
+app.use(
+  cors({
+    origin: "https://ethels-80th-birthday.online",
+    methods: ["GET", "POST"],
+  })
+);
+
+app.use(helmet.hsts({
+  maxAge: 31536000, // 1 year
+  includeSubDomains: true,
+  preload: true,
+}));
+
+app.enable("trust proxy");
+app.use((req, res, next) => {
+  if (req.secure) return next();
+  res.redirect(`https://${req.headers.host}${req.url}`);
+});
+
+app.use(bodyParser.json());
+app.use(express.static(path.resolve(__dirname, "dist")));
 
 //create transporter for sending system emails
 const transporter = nodemailer.createTransport({
@@ -50,21 +73,7 @@ const guestMailOptions = {
   subject: "Mama Ethel's 80th Birthday Bash!",
 };
 
-app.use(
-  cors({
-    origin: "https://ethels-80th-birthday.online",
-    methods: ["GET", "POST"],
-  })
-);
 
-app.enable("trust proxy");
-app.use((req, res, next) => {
-  if (req.secure) return next();
-  res.redirect(`https://${req.headers.host}${req.url}`);
-});
-
-app.use(bodyParser.json());
-app.use(express.static(path.resolve(__dirname, "dist")));
 
 app.get("/", (req, res) => {
   res.sendFile(path.resolve(__dirname, "dist", "index.html"));
